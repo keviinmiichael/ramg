@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="nav">
+        <h3>rick and morty game</h3>
+    </nav>
+    <main class="main">
+        <h1>Is it alive or not?</h1>
+        <div class="carousel">
+            <section class="card main-card">
+                <div class="char">
+                    <h3>Morty</h3>
+                    <img src="morty.png" alt="foto">
+                </div>
+                <div class="buttons">
+                    <input type="button" class="dead" value="DEAD" onclick="slideCard('alive')">
+                    <input type="button" class="alive" value="ALIVE" onclick="slideCard('dead')">
+                </div>
+            </section>
+
+            <section class="card">
+                <div class="char">
+                    <h3>Morty</h3>
+                    <img src="morty.png" alt="foto">
+                </div>
+                <div class="buttons">
+                    <input type="button" class="dead" value="DEAD" onclick="slideCard('alive')">
+                    <input type="button" class="alive" value="ALIVE" onclick="slideCard('dead')">
+                </div>
+            </section>
+
+            <section class="card">
+                <div class="char">
+                    <h3>Morty</h3>
+                    <img src="morty.png" alt="foto">
+                </div>
+                <div class="buttons">
+                    <input type="button" class="dead" value="DEAD" onclick="slideCard('alive')">
+                    <input type="button" class="alive" value="ALIVE" onclick="slideCard('dead')">
+                </div>
+            </section>
+
+            <section class="card">
+                <div class="char">
+                    <h3>Morty</h3>
+                    <img src="morty.png" alt="foto">
+                </div>
+                <div class="buttons">
+                    <input type="button" class="dead" value="DEAD" onclick="slideCard('alive')">
+                    <input type="button" class="alive" value="ALIVE" onclick="slideCard('dead')">
+                </div>
+            </section>
+        </div>
+        <div class="score">
+            <div class="wrongs">
+                <img src="wrongs.png" alt="wrong-icon">
+                <h3>00</h3>
+            </div>
+            <div class="checks">
+                <img src="check.png" alt="check-icon">
+                <h3>00</h3>
+            </div>
+        </div>
+
+   
+    </main>
+    <footer class="footer">
+        <h2>
+            mADE WITHOUTH KNOWLEDGE
+        </h2>
+    </footer>
+
+
+
+    <script>
+let currentIndex = 0;
+const cards = document.querySelectorAll('.card');
+
+function slideCard(cardType) {
+  const prevIndex = currentIndex;
+  if (cardType === 'alive' && currentIndex < cards.length - 1) {
+    currentIndex++;
+  } else if (cardType === 'dead' && currentIndex > 0) {
+    currentIndex--;
+  }
+
+  const cardWidth = cards[currentIndex].offsetWidth;
+  const offset = -currentIndex * cardWidth;
+  document.querySelector('.carousel').style.transform = `translateX(${offset}px`;
+
+  // Eliminamos la clase 'active' de la tarjeta anterior y la agregamos a la actual
+  cards[prevIndex].classList.remove('active');
+  cards[currentIndex].classList.add('active');
+}
+        
+
+    </script>
+</body>
+</html>

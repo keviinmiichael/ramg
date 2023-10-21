@@ -1,0 +1,191 @@
+@font-face {
+    font-family: 'MiFuente';
+    src: url('get_schwifty.ttf') format('truetype');
+  }
+
+*{
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-weight: 600;
+    line-height: normal;
+}
+
+
+body {
+    display: grid;
+    grid-template-areas:
+        "navbar"
+        "main"
+        "footer";
+    grid-template-rows: 70px 1fr 70px;
+    height: 100vh;
+}
+
+.nav {
+    grid-area: navbar;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav h3{
+    text-transform: capitalize;
+    font-size: 2.5rem;
+    font-family: 'MiFuente';
+}
+
+.main {
+    grid-area: main;
+    background-color: #f0f0f0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+main > h1{
+    font-family: 'MiFuente';
+    font-size: 5rem;
+    text-align: center; 
+    color: #BFDF42; 
+    text-shadow: 2px 2px 0 #42B5CB, -2px -2px 0 #42B5CB, 2px -2px 0 #00F, -2px 2px 0 #00F; /* Sombra de texto azul */
+    padding: 20px; 
+}
+
+.footer {
+    grid-area: footer;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    align-items: flex-start;
+    justify-content: baseline;
+    padding: 20px;
+}
+
+
+.card{
+    min-width: 250px;
+    max-width: 350px;
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid rgba(165, 164, 164, 0.109);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+}
+
+.char{
+    width: 100%;
+    display: flex;
+    /* background-color: yellow; */
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.buttons{
+    width: 100%;
+    display: flex;
+    align-self: baseline;
+    justify-content: space-around;
+    gap: 5px;
+    /* background-color: green; */
+}
+
+.char > h3{
+    /* background-color: white; */
+    width: 100%;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.char > img{
+    width:50%;
+    /* background-color: black; */
+}
+
+.dead, .alive{
+    font-size: 16px;
+    border: 2px solid #1A1A1A;
+    border-radius: 10px;
+    color: #3B3B3B;
+    cursor: pointer;
+    min-height: 40px;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    width: 100%;
+}
+
+.dead:hover{
+    color: #fff;
+    background-color: #9f2e2e;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+}
+
+.alive:hover {
+    color: #fff;
+    background-color: #47b13b;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+}
+
+.alive:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+.dead:active {
+    box-shadow: none;
+    transform: translateY(0);
+}
+
+.score{
+    display: flex;
+    min-width: 250px;
+    max-width: 350px;
+    justify-content: space-around;
+    font-size: 2rem;
+}
+
+.score img{
+    max-width: 2rem;
+}
+
+
+
+
+/* CODIGO DE CARROUSEL */
+
+.carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px; /* Tamaño máximo del carrusel */
+    margin: 0 auto;
+    transition: transform 0.3s; /* Agregamos una transición para la animación */
+  }
+  
+  .card {
+    transition: transform 0.3s; /* Agregamos una transición para la animación */
+  }
+  
+  .main-card {
+    width: 60%; /* Ajusta el ancho de la tarjeta principal */
+  }
+  
+  .buttons {
+    margin-top: 10px;
+  }

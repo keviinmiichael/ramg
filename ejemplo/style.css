@@ -1,0 +1,114 @@
+@import url(base.css);
+
+body {
+    display: grid;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    margin: 1rem 0;
+}
+
+#search{
+    min-width: 250px;
+}
+
+body header nav {
+    margin: 1rem 0;
+}
+
+nav ul{
+    display: flex;
+    gap: 1rem;
+}
+
+main{
+    display: grid;
+    gap: 0.5rem 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+    justify-content: center;
+}
+
+article{
+    display: flex;
+    justify-self: center;
+    flex-direction: column;
+    position: relative;
+    max-height: 100%;
+}
+
+article p{
+    flex: end;
+}
+
+footer{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0.5rem 0;
+}
+
+
+@media (width > 600px){
+    body{
+        display: grid;
+        grid-template-areas: 
+            "header header"
+            "menu content"
+            "menu footer"
+            ;
+            grid-template-columns: 10rem 1fr;
+            grid-template-rows: 5rem 1fr 2rem;
+    }
+
+    header{
+        /* background-color: brown; */
+        grid-area: 
+            header 
+        ;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    h1{
+        justify-self: start;
+    }
+
+    body > nav{
+        background-color: blueviolet;
+        grid-area: menu;
+        
+    }
+
+    body > nav ul{
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        gap: 0.2rem;
+    }
+
+    main{
+        grid-area: content;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 1rem;
+        min-height: max-content;
+    }
+
+    footer{
+        grid-area: footer;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    }
+
+}
