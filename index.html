@@ -14,57 +14,57 @@
         <h1>Is it alive or not?</h1>
         <div class="carousel">
             <section class="card main-card">
-                <div class="char">
+                <div class="char"  data-state="alive">
                     <h3>Morty</h3>
                     <img src="morty.png" alt="foto">
                 </div>
                 <div class="buttons">
-                    <input type="button" class="dead" value="DEAD" onclick="slideCard('alive')">
-                    <input type="button" class="alive" value="ALIVE" onclick="slideCard('dead')">
+                    <input type="button" class="dead" value="DEAD" onclick="checkState('dead')">
+      <input type="button" class="alive" value="ALIVE" onclick="checkState('alive')">
                 </div>
             </section>
 
             <section class="card">
-                <div class="char">
+                <div class="char"  data-state="alive">
                     <h3>Morty</h3>
                     <img src="morty.png" alt="foto">
                 </div>
                 <div class="buttons">
-                    <input type="button" class="dead" value="DEAD" onclick="slideCard('alive')">
-                    <input type="button" class="alive" value="ALIVE" onclick="slideCard('dead')">
+                    <input type="button" class="dead" value="DEAD" onclick="checkState('dead')">
+      <input type="button" class="alive" value="ALIVE" onclick="checkState('alive')">
                 </div>
             </section>
 
             <section class="card">
-                <div class="char">
+                <div class="char"  data-state="alive">
                     <h3>Morty</h3>
                     <img src="morty.png" alt="foto">
                 </div>
                 <div class="buttons">
-                    <input type="button" class="dead" value="DEAD" onclick="slideCard('alive')">
-                    <input type="button" class="alive" value="ALIVE" onclick="slideCard('dead')">
+                    <input type="button" class="dead" value="DEAD" onclick="checkState('dead')">
+      <input type="button" class="alive" value="ALIVE" onclick="checkState('alive')">
                 </div>
             </section>
 
             <section class="card">
-                <div class="char">
+                <div class="char"  data-state="alive">
                     <h3>Morty</h3>
                     <img src="morty.png" alt="foto">
                 </div>
                 <div class="buttons">
-                    <input type="button" class="dead" value="DEAD" onclick="slideCard('alive')">
-                    <input type="button" class="alive" value="ALIVE" onclick="slideCard('dead')">
+                    <input type="button" class="dead" value="DEAD" onclick="checkState('dead')">
+                    <input type="button" class="alive" value="ALIVE" onclick="checkState('alive')">
                 </div>
             </section>
         </div>
         <div class="score">
             <div class="wrongs">
                 <img src="wrongs.png" alt="wrong-icon">
-                <h3>00</h3>
+                <h3 id="score-wrongs">00</h3>
             </div>
             <div class="checks">
                 <img src="check.png" alt="check-icon">
-                <h3>00</h3>
+                <h3 id="score-checks">00</h3>
             </div>
         </div>
 
@@ -81,22 +81,36 @@
     <script>
 let currentIndex = 0;
 const cards = document.querySelectorAll('.card');
+let checks = 0;
+let wrongs = 0;
 
-function slideCard(cardType) {
-  const prevIndex = currentIndex;
-  if (cardType === 'alive' && currentIndex < cards.length - 1) {
-    currentIndex++;
-  } else if (cardType === 'dead' && currentIndex > 0) {
-    currentIndex--;
+function checkState(desiredState) {
+  const card = cards[currentIndex];
+  const char = card.querySelector('.char');
+  const currentState = char.getAttribute('data-state');
+
+  if (desiredState === currentState) {
+    checks++;
+    var score_check = document.getElementById("score-checks");
+    score_check.innerHTML = checks;
+  } else {
+    wrongs++;
+    var score_wrong = document.getElementById("score-wrongs");
+    score_wrong.innerHTML = wrongs;
   }
 
-  const cardWidth = cards[currentIndex].offsetWidth;
-  const offset = -currentIndex * cardWidth;
-  document.querySelector('.carousel').style.transform = `translateX(${offset}px`;
+  if (currentIndex < cards.length - 1) {
+    currentIndex++;
+    const cardWidth = cards[currentIndex].offsetWidth;
+    const offset = -currentIndex * cardWidth;
+    document.querySelector('.carousel').style.transform = `translateX(${offset}px`;
 
-  // Eliminamos la clase 'active' de la tarjeta anterior y la agregamos a la actual
-  cards[prevIndex].classList.remove('active');
-  cards[currentIndex].classList.add('active');
+    // Actualizar el estado en la tarjeta actual
+    char.setAttribute('data-state', desiredState);
+  }
+  
+  // Puedes hacer lo que desees con las variables 'checks' y 'wrongs' aquí.
+  console.log(`Correctos: ${checks}, Incorrectos: ${wrongs}`);
 }
         
 
